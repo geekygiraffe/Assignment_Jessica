@@ -111,6 +111,7 @@ elseif M1(1,1) >= sq2 (2,1) && M1(1,2) <= sq2(1,1);
 elseif M1(1,1) >= sq1 (2,1) && M1(1,2) <= sq1(1,1);
     sqr1 = -1;
 end
+
 %%MOVE TWO(2)
 if sqr1 > 0;
     M2_row = mean(sq1(1,:));
@@ -303,6 +304,9 @@ end
 if sum(C1_Homo) == 3;
 text(M5(1,1),M5(1,2),UWin,'Color','red' ,'FontSize', 20);
     return
+elseif sum(C2_Homo) == 3;
+text(M5(1,1),M5(1,2),UWin, 'Color','red','FontSize', 20);
+    return   
 elseif sum(C3_Homo) == 3;
 text(M5(1,1),M5(1,2),UWin, 'Color','red','FontSize', 20);
     return
@@ -315,7 +319,6 @@ text(M5(1,1),M5(1,2),UWin, 'Color','red','FontSize', 20)
 elseif sum(R3_Homo) ==3;
 text(M5(1,1),M5(1,2),UWin, 'Color','red','FontSize', 20);
     return
-% elseif trace(
 end 
 %%MOVE SIX(6)
 if sqr1 > 0;
