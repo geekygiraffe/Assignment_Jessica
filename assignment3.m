@@ -13,21 +13,27 @@ what your code does.
 6.) Generate computer move.
 7.) Keep going until there is a winner or no more available moves.
 8.) Show final prompt with game result and a finishing message.
-sum the columns, rows and leading and reverse-leading diagonals:
-if the answer to any is 0 or 3 then you declare the winner to be player 0 or 1.
-
 10.) Once a space is taken, another player cannot move to that spot.
 %}
 clear all 
 close all
 % welcome statement 
-% sprintf 'Welcome to tic - tac - toe! \n'
-% sprintf 'using the cross hairs select the box you would like to move \n'
-% sprintf ' normal rules apply; no cheating - good luck human \n'
+axis([0 2 0 1.5])
+Welcome = {'Welcome to tic - tac - toe!'};
+Direction = {'Use the cross hairs to select your move'};
+Rules = {'Normal rules apply; no cheating'};
+Luck = {'Good luck human :) '};
+text(0.4,1.15, Welcome,'Color','blue','FontSize', 25)
+text(0.2,0.85, Direction,'Color','magenta','FontSize', 20)
+text(0.2,0.65, Rules,'Color','magenta','FontSize', 20)
+text(0.2,0.45, Luck,'Color','magenta','FontSize', 20)
 %initialize board
+UWin = {'Yay you win'};
+IWin = {'You lose'};
+Tie = {'Tie Game - No Winner'};
 axis([0 1.5 0 1.5])
 grid on
-%Identify ranges of each row and column
+%Identify ranges of each row and col.2umn
 sq1 = [1.5 1.0;0.0 0.5];   
 sq2 = [1.5 1.0;0.5 1.0];  
 sq3 = [1.5 1.0;1.0 1.5];  
@@ -64,6 +70,9 @@ C3_AI = 0; % ColThr = [1 1.5];
 
 %%MOVE ONE(1)
 M1 = ginput (1);
+close all
+axis([0 1.5 0 1.5])
+grid on
 hold on 
 scatter (M1(1,1),M1(1,2),500,[0 0 1],'filled');
 %Determine Column
@@ -132,23 +141,23 @@ elseif(M2(1,1) <= sq7(1,2)) && (M2(1,1) >= sq7(1,2));
 end
 %Id Square
 if M2(1,2) >= sq9 (2,1) && M2(1,1) <= sq9(1,1);
-    sqr9 = -1;
+    sqr9 = -2;
 elseif M2(1,2) >= sq8 (2,1) && M2(1,1) <= sq8(1,1);
-    sqr8 = -1;
+    sqr8 = -2;
 elseif M2(1,2) >= sq7 (2,1) && M2(1,1) <= sq7(1,1);
-    sqr7 = -1;
+    sqr7 = -2;
 elseif M2(1,2) >= sq6 (2,1) && M2(1,1) <= sq6(1,1);
-    sqr6 = -1;
+    sqr6 = -2;
 elseif M2(1,2) >= sq5 (2,1) && M2(1,1) <= sq5(1,1);
-    sqr5 = -1;
+    sqr5 = -2;
 elseif M2(1,2) >= sq4 (2,1) && M2(1,1) <= sq4(1,1);
-    sqr4 = -1;
+    sqr4 = -2;
 elseif M2(1,2) >= sq3 (2,1) && M2(1,1) <= sq3(1,1);
-    sqr3 = -1;
+    sqr3 = -2;
 elseif M2(1,2) >= sq2 (2,1) && M2(1,1) <= sq2(1,1);
-    sqr2 = -1;
+    sqr2 = -2;
 elseif M2(1,2) >= sq1 (2,1) && M2(1,1) <= sq1(1,1);
-    sqr1 = -1;
+    sqr1 = -2;
 end
 
 %%MOVE THREE(3)
@@ -231,23 +240,23 @@ elseif(M4(1,1) <= sq7(1,2)) && (M4(1,1) >= sq7(1,2));
 end
 %Id Square
 if M4(1,2) >= sq9 (2,1) && M4(1,1) <= sq9(1,1);
-    sqr9 = -1;
+    sqr9 = -2;
 elseif M4(1,2) >= sq8 (2,1) && M4(1,1) <= sq8(1,1);
-    sqr8 = -1;
+    sqr8 = -2;
 elseif M4(1,2) >= sq7 (2,1) && M4(1,1) <= sq7(1,1);
-    sqr7 = -1;
+    sqr7 = -2;
 elseif M4(1,2) >= sq6 (2,1) && M4(1,1) <= sq6(1,1);
-    sqr6 = -1;
+    sqr6 = -2;
 elseif M4(1,2) >= sq5 (2,1) && M4(1,1) <= sq5(1,1);
-    sqr5 = -1;
+    sqr5 = -2;
 elseif M4(1,2) >= sq4 (2,1) && M4(1,1) <= sq4(1,1);
-    sqr4 = -1;
+    sqr4 = -2;
 elseif M4(1,2) >= sq3 (2,1) && M4(1,1) <= sq3(1,1);
-    sqr3 = -1;
+    sqr3 = -2;
 elseif M4(1,2) >= sq2 (2,1) && M4(1,1) <= sq2(1,1);
-    sqr2 = -1;
+    sqr2 = -2;
 elseif M4(1,2) >= sq1 (2,1) && M4(1,1) <= sq1(1,1);
-    sqr1 = -1;
+    sqr1 = -2;
 end
 
 %%MOVE FIVE (5)
@@ -291,26 +300,23 @@ elseif M5(1,1) >= sq1 (2,1) && M5(1,2) <= sq1(1,1);
 end
 
 %winner?
-C1 = sum(C1_Homo);
-C2 = sum(C2_Homo);
-C3 = sum(C3_Homo);
-R1 = sum(R1_Homo);
-R2 = sum(R2_Homo);
-R3 = sum(R3_Homo);
-if C1 == 3;
-    sprintf ('winner');
-elseif C2 == 3;
-    sprintf ('winner');
-elseif C3 == 3;
-    sprintf ('winner');
-elseif R1 == 3;
-    sprintf ('winner');
-elseif R2 == 3;
-    sprintf ('winner');
-elseif R3 == 3;
-    sprintf ('winner');
-end
-    
+if sum(C1_Homo) == 3;
+text(M5(1,1),M5(1,2),UWin,'Color','red' ,'FontSize', 20);
+    return
+elseif sum(C3_Homo) == 3;
+text(M5(1,1),M5(1,2),UWin, 'Color','red','FontSize', 20);
+    return
+elseif sum(R1_Homo) == 3;
+text(M5(1,1),M5(1,2),UWin, 'Color','red','FontSize', 20);
+    return
+elseif sum(R2_Homo) ==3;
+text(M5(1,1),M5(1,2),UWin, 'Color','red','FontSize', 20)
+    return
+elseif sum(R3_Homo) ==3;
+text(M5(1,1),M5(1,2),UWin, 'Color','red','FontSize', 20);
+    return
+% elseif trace(
+end 
 %%MOVE SIX(6)
 if sqr1 > 0;
     M6_row = mean(sq1(1,:));
@@ -361,23 +367,43 @@ elseif(M6(1,1) <= sq7(1,1)) && (M6(1,1) >= sq7(1,2));
 end
 %ID Square
 if M6(1,2) >= sq9 (2,1) && M6(1,1) <= sq9(1,1);
-    sqr9 = -1;
+    sqr9 = -2;
 elseif M6(1,2) >= sq8 (2,1) && M6(1,1) <= sq8(1,1);
-    sqr8 = -1;
+    sqr8 = -2;
 elseif M6(1,2) >= sq7 (2,1) && M6(1,1) <= sq7(1,1);
-    sqr7 = -1;
+    sqr7 = -2;
 elseif M6(1,2) >= sq6 (2,1) && M6(1,1) <= sq6(1,1);
-    sqr6 = -1;
+    sqr6 = -2;
 elseif M6(1,2) >= sq5 (2,1) && M6(1,1) <= sq5(1,1);
-    sqr5 = -1;
+    sqr5 = -2;
 elseif M6(1,2) >= sq4 (2,1) && M6(1,1) <= sq4(1,1);
-    sqr4 = -1;
+    sqr4 = -2;
 elseif M6(1,2) >= sq3 (2,1) && M6(1,1) <= sq3(1,1);
-    sqr3 = -1;
+    sqr3 = -2;
 elseif M6(1,2) >= sq2 (2,1) && M6(1,1) <= sq2(1,1);
-    sqr2 = -1;
+    sqr2 = -2;
 elseif M6(1,2) >= sq1 (2,1) && M6(1,1) <= sq1(1,1);
-    sqr1 = -1;
+    sqr1 = -2;
+end
+%winner
+if sum(C1_AI) == 3;
+text(M6(1,1),M6(1,2),IWin,'Color','cyan', 'FontSize', 20)
+    return
+elseif sum(C2_AI) == 3;
+text(M6(1,1),M6(1,2),IWin,'Color','cyan' ,'FontSize', 20)
+    return
+elseif sum(C3_AI) == 3;
+text(M6(1,1),M6(1,2),IWin, 'Color','cyan','FontSize', 20)
+    return
+elseif sum(R1_AI) == 3;
+text(M6(1,1),M6(1,2),IWin,'Color','cyan', 'FontSize', 20)
+    return
+elseif sum(R2_AI) ==3;
+text(M6(1,1),M6(1,2),IWin,'Color','cyan', 'FontSize', 20)
+    return
+elseif sum(R3_AI) ==3;
+text(M6(1,1),M6(1,2),IWin,'Color','cyan' ,'FontSize', 20)
+    return
 end
 
 %%MOVE SEVEN(7)
@@ -420,19 +446,25 @@ elseif M7(1,1) >= sq1 (2,1) && M7(1,2) <= sq1(1,1);
     sqr1 = -1;
 end
 %winner?
-if C1 == 3;
-    sprintf ('winner');
-elseif C2 == 3;
-    sprintf ('winner');
-elseif C3 == 3;
-    sprintf ('winner');
-elseif R1 == 3;
-    sprintf ('winner');
-elseif R2 == 3;
-    sprintf ('winner');
-elseif R3 == 3;
-    sprintf ('winner');
-end
+if sum(C1_Homo) == 3;
+text(M7(1,1),M7(1,2),UWin,'Color','red', 'FontSize', 20)
+    return
+elseif sum(C2_Homo) == 3;
+text(M7(1,1),M7(1,2),UWin,'Color','red', 'FontSize', 20)
+    return
+elseif sum(C3_Homo) == 3;
+text(M7(1,1),M7(1,2),UWin,'Color','red', 'FontSize', 20)
+    return
+elseif sum(R1_Homo) == 3;
+text(M7(1,1),M7(1,2),UWin,'Color','red', 'FontSize', 20)
+    return
+elseif sum(R2_Homo) ==3;
+text(M7(1,1),M7(1,2),UWin,'Color','red', 'FontSize', 20)
+    return
+elseif sum(R3_Homo) ==3;
+text(M7(1,1),M7(1,2),UWin,'Color','red', 'FontSize', 20)
+    return
+end 
 
 %%MOVE EIGHT(8)
 if sqr1 > 0;
@@ -494,24 +526,45 @@ elseif(M8(1,1) <= sq7(1,1)) && (M8(1,1) >= sq7(1,2));
 end
 %ID Square
 if M8(1,2) >= sq9 (2,1) && M8(1,1) <= sq9(1,1);
-    sqr9 = -1;
+    sqr9 = -2;
 elseif M8(1,2) >= sq8 (2,1) && M8(1,1) <= sq8(1,1);
-    sqr8 = -1;
+    sqr8 = -2;
 elseif M8(1,2) >= sq7 (2,1) && M8(1,1) <= sq7(1,1);
-    sqr7 = -1;
+    sqr7 = -2;
 elseif M8(1,2) >= sq6 (2,1) && M8(1,1) <= sq6(1,1);
-    sqr6 = -1;
+    sqr6 = -2;
 elseif M8(1,2) >= sq5 (2,1) && M8(1,1) <= sq5(1,1);
-    sqr5 = -1;
+    sqr5 = -2;
 elseif M8(1,2) >= sq4 (2,1) && M8(1,1) <= sq4(1,1);
-    sqr4 = -1;
+    sqr4 = -2;
 elseif M8(1,2) >= sq3 (2,1) && M8(1,1) <= sq3(1,1);
-    sqr3 = -1;
+    sqr3 = -2;
 elseif M8(1,2) >= sq2 (2,1) && M8(1,1) <= sq2(1,1);
-    sqr2 = -1;
+    sqr2 = -2;
 elseif M8(1,2) >= sq1 (2,1) && M8(1,1) <= sq1(1,1);
-    sqr1 = -1;
+    sqr1 = -2;
 end
+
+%winner
+if sum(C1_AI) == 3;
+text(M8(1,1),M8(1,2), IWin,'Color','cyan', 'FontSize', 20)
+    return
+elseif sum(C2_AI) == 3;
+text(M8(1,1),M8(1,2), IWin,'Color','cyan', 'FontSize', 20)
+    return
+elseif sum(C3_AI) == 3;
+text(M8(1,1),M8(1,2), IWin,'Color','cyan', 'FontSize', 20)
+    return
+elseif sum(R1_AI) == 3;
+text(M8(1,1),M8(1,2), IWin,'Color','cyan', 'FontSize', 20)
+    return
+elseif sum(R2_AI) == 3;
+text(M8(1,1),M8(1,2), IWin,'Color','cyan', 'FontSize', 20)
+    return
+elseif sum(R3_AI) ==3;
+text(M8(1,1),M8(1,2),IWin,'Color','cyan','FontSize', 20)
+    return
+end 
 
 %%MOVE NINE(9)
 M9 = ginput(1);
@@ -553,16 +606,24 @@ elseif M9(1,1) >= sq1 (2,1) && M9(1,2) <= sq1(1,1);
     sqr1 = -1;
 end
 %winner?
-if C1 == 3;
-    sprintf ('winner');
-elseif C2 == 3;
-    sprintf ('winner');
-elseif C3 == 3;
-    sprintf ('winner');
-elseif R1 == 3;
-    sprintf ('winner');
-elseif R2 == 3;
-    sprintf ('winner');
-elseif R3 == 3;
-    sprintf ('winner');
-end
+if sum(C1_Homo) == 3;
+text(M9(1,1),M9(1,2),UWin,'Color','red', 'FontSize', 20)
+    return
+elseif sum(C2_Homo) == 3;
+text(M9(1,1),M9(1,2),UWin,'Color','red', 'FontSize', 20)
+    return
+elseif sum(C3_Homo) == 3;
+text(M9(1,1),M9(1,2),UWin,'Color','red', 'FontSize', 20)
+    return
+elseif sum(R1_Homo) == 3;
+text(M9(1,1),M9(1,2),UWin,'Color','red', 'FontSize', 20)
+    return
+elseif sum(R2_Homo) ==3;
+text(M9(1,1),M9(1,2),UWin,'Color','red', 'FontSize', 20)
+    return
+elseif sum(R3_Homo) ==3;
+text(M9(1,1),M9(1,2),UWin,'Color','red', 'FontSize', 20)
+    return
+elseif sum(R3_Homo) ~= 3;
+    text(sq5(1,1),sq5(1,2), Tie, 'FontSize', 20)
+end 
