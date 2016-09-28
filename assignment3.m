@@ -1,20 +1,8 @@
 %%KINE6803 - Assignment 3: Tic - Tac - Toe
-%
+
 %Submitted by: Jessica Lynn 
 %Due Sept 27, 2016
-%{
-Requirements:
-1.) Comment section at the top with your name, date and a short description of
-what your code does.
-2.) Welcome message for the user.
-3.) Show game board.
-4.) Prompt user for move.
-5.) Display updated game board.
-6.) Generate computer move.
-7.) Keep going until there is a winner or no more available moves.
-8.) Show final prompt with game result and a finishing message.
-10.) Once a space is taken, another player cannot move to that spot.
-%}
+
 clear all 
 close all
 % welcome statement 
@@ -319,7 +307,14 @@ text(M5(1,1),M5(1,2),UWin, 'Color','red','FontSize', 20)
 elseif sum(R3_Homo) ==3;
 text(M5(1,1),M5(1,2),UWin, 'Color','red','FontSize', 20);
     return
-end 
+elseif sum(sqr1 + sqr5 + sqr9) == -3
+    text(M5(1,1),M5(1,2),UWin, 'Color','red','FontSize', 20);
+    return
+elseif sum(sqr3 + sqr5 + sqr7) == -3
+    text(M5(1,1),M5(1,2),UWin, 'Color','red','FontSize', 20);
+    return
+end
+
 %%MOVE SIX(6)
 if sqr1 > 0;
     M6_row = mean(sq1(1,:));
@@ -407,6 +402,12 @@ text(M6(1,1),M6(1,2),IWin,'Color','cyan', 'FontSize', 20)
 elseif sum(R3_AI) ==3;
 text(M6(1,1),M6(1,2),IWin,'Color','cyan' ,'FontSize', 20)
     return
+elseif sum(sqr1 + sqr5 + sqr9) == -6
+    text(M6(1,1),M6(1,2),IWin, 'Color','red','FontSize', 20);
+    return
+elseif sum(sqr3 + sqr5 + sqr7) == -6
+    text(M6(1,1),M6(1,2),IWin, 'Color','red','FontSize', 20);
+    return
 end
 
 %%MOVE SEVEN(7)
@@ -466,6 +467,12 @@ text(M7(1,1),M7(1,2),UWin,'Color','red', 'FontSize', 20)
     return
 elseif sum(R3_Homo) ==3;
 text(M7(1,1),M7(1,2),UWin,'Color','red', 'FontSize', 20)
+    return
+elseif sum(sqr1 + sqr5 + sqr9) == -3
+    text(M7(1,1),M7(1,2),UWin, 'Color','red','FontSize', 20);
+    return
+elseif sum(sqr3 + sqr5 + sqr7) == -3
+    text(M7(1,1),M7(1,2),UWin, 'Color','red','FontSize', 20);
     return
 end 
 
@@ -567,6 +574,12 @@ text(M8(1,1),M8(1,2), IWin,'Color','cyan', 'FontSize', 20)
 elseif sum(R3_AI) ==3;
 text(M8(1,1),M8(1,2),IWin,'Color','cyan','FontSize', 20)
     return
+elseif sum(sqr1 + sqr5 + sqr9) == -6
+    text(M8(1,1),M8(1,2),IWin, 'Color','red','FontSize', 20);
+    return
+elseif sum(sqr3 + sqr5 + sqr7) == -6
+    text(M8(1,1),M8(1,2),IWin, 'Color','red','FontSize', 20);
+    return
 end 
 
 %%MOVE NINE(9)
@@ -629,4 +642,10 @@ text(M9(1,1),M9(1,2),UWin,'Color','red', 'FontSize', 20)
     return
 elseif sum(R3_Homo) ~= 3;
     text(sq5(1,1),sq5(1,2), Tie, 'FontSize', 20)
+elseif sum(sqr1 + sqr5 + sqr9) == -3
+    text(M9(1,1),M5(1,2),UWin, 'Color','red','FontSize', 20);
+    return
+elseif sum(sqr3 + sqr5 + sqr7) == -3
+    text(M9(1,1),M5(1,2),UWin, 'Color','red','FontSize', 20);
+    return
 end 
