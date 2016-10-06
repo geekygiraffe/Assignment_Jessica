@@ -1,8 +1,8 @@
-%%KINE6803 - Assignment 3: Tic - Tac - Toe Part II
+%%KINE6803 - Assignment 4: Tic - Tac - Toe Part II
 
 %Tic Tac Toe loop
 %{
-Requirements:
+Assignment Requirements:
 2.) Use at least one while loop
 3.) Use at least one for loop.
 4.) Use at least one break statement.
@@ -24,10 +24,6 @@ like to play again. This should continue until the user says no
  while choice == 1
     clear all 
     close all
-%%initialize game
-axis([0 1.5 0 1.5])
-grid on
-hold on
 %%initialize game
 axis([0 1.5 0 1.5])
 grid on
@@ -95,7 +91,6 @@ sq9 = [0.5 0.0;1.0 1.5];
         R1_Homo = R1_Homo + 1;
     end
     %Id Square
-    %for i = 1:9
     if M1(1,1) >= sq9(2,1) && M1(1,2) <= sq9(1,1);
         sqr9 = -1;
     elseif M1(1,1) >= sq8 (2,1) && M1(1,2) <= sq8(1,1);
@@ -1052,6 +1047,7 @@ for i = 1:9;
         sqr1 = -2;
     end
     %winner
+    for i = 2:2:8
     if sum(C1_AI) == 3;
         text(M6(1,1),M6(1,2),IWin,'Color','cyan', 'FontSize', 20);
         continue
@@ -1076,6 +1072,7 @@ for i = 1:9;
     elseif sum(sqr3 + sqr5 + sqr7) == -6
         text(M6(1,1),M6(1,2),IWin, 'Color','red','FontSize', 20);
         continue
+    end
     end
         
     %%MOVE SEVEN(7)
