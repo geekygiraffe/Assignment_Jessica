@@ -727,9 +727,9 @@ sq9 = [0.5 0.0;1.0 1.5];
     C2_AI = 0; % ColTwo = [0.5 1];
     C3_AI = 0; % ColThr = [1 1.5];
 %%MOVE ONE(1)
-for i = 1:9;
-    M1 = ginput (1);
-    scatter (M1(1,1),M1(1,2),500,[0 0 1],'filled');
+for i = 1:9
+    M(i) = ginput (1);
+    scatter (M(i)(1,1),M((1,2),500,[0 0 1],'filled');
     %Determine Column
     if (M1(1,1) >= sq1(2,1)) && (M1(1,1) <= sq1(2,2));
         C1_Homo = C1_Homo + 1;
@@ -1319,4 +1319,3 @@ for i = 1:9;
     end
     end
 end
-    end
