@@ -1,4 +1,4 @@
-%%KINE6803 - Assignment 3: Tic - Tac - Toe Part II
+%%KINE6803 - Assignment 4: Tic - Tac - Toe Part II
 
 %Tic Tac Toe loop
 %{
