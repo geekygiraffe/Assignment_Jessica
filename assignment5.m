@@ -31,15 +31,20 @@ when I run your code.)
 %created by Jessica McDonnell
 %Due Oct 20
 
+clear all
+close all
+
 % import each column as a separate vector and use the column headers as the variable names.
 [SubjectID,Age,Gender,Weight,Day1,Day2,Day3] = importfile ('isok_data_6803.csv', 2, 26);
+
 % individual Female /male mean isometric strength values across 3 days of lifting & single mean value for Female /Males
 [femaleIsoIndMeans, maleIsoIndMeans, femaleGroupIsoMean, maleGroupIsoMean] = genderIsoCalc (Day1, Day2, Day3, Gender);
+
 %subjects who had an increasebetween subsequent days
 [day1toDay2] = dayComparator (Day1, Day2);
-
 [day2toDay3] = dayComparator (Day2, Day3);
-% Weight normalized  isokinetic data and group means for each day
+
+% Weight normalized isokinetic data and group means for each day
 for i = 1:25
     normDay1(i) = (Day1(i) / Weight(i));
     normDay1mean = mean (normDay1);
@@ -48,26 +53,14 @@ for i = 1:25
     normDay3(i) = (Day3(i) / Weight(i));
     normDay3mean = mean (normDay3);
 end
-
-% ThreeDayAvg = zeros(25,1);
-% LadiesAvg = zeros(25,1);
-% GentlemenAvg = zeros (25,1);
-% for i = 1:25
-%     ThreeDayAvg(i) = ((Day1(i) + Day2(i) + Day3(i))/3);
-%     Female = strfind (Gender, 'F','ForceCellOutput', true);
-%     Male = strfind (Gender, 'M','ForceCellOutput', true);
-%      if Female{i,1} == 1;
-%         LadiesAvg(i) = ThreeDayAvg(i,1);
-%      elseif Male{i,1} == 1;
-%          GentlemenAvg(i) = ThreeDayAvg(i,1);
-%      end
-%      Ladies = cell2mat(Female);
-%      Gentlemen = cell2mat(Male)
-%      femaleGroupIsoMean = sum(LadiesAvg)/(sum(Ladies))
-%      maleGroupIsoMean = sum(GentlemenAvg)/(sum(Gentlemen))
-%      end
-
-
-
-
+% 
+% %iso_results (femaleIsoIndMeans, maleIsoIndMeans, femaleGroupIsoMean, maleGroupIsoMean, day1toDay2, day2toDay3, normDay1mean, normDay2mean, normDay3mean)
+% 
+% ExportVariables = {'femaleIsoIndMeans', 'maleIsoIndMeans', 'femaleGroupIsoMean', 'maleGroupIsoMean', 'day1toDay2', 'day2toDay3', 'normDay1mean', 'normDay2mean', 'normDay3mean'};
+% CummuluativeCell= {femaleIsoIndMeans, maleIsoIndMeans, femaleGroupIsoMean, maleGroupIsoMean, day1toDay2, day2toDay3, normDay1mean, normDay2mean, normDay3mean};
+% 
+% csvwrite('iso_results',CummuluativeCell)
+% 
+% 
+% writetable(CummuluativeCell, 'iso_results.csv');
 
