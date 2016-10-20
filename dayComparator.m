@@ -5,7 +5,7 @@ first day to the second day (it should also work for the second day to the third
 function in your main script twice (be sure to update your inputs when you call the function
 the second time) and store the outputs as day1toDay2 and day2toDay3.
 %}
-
+PositiveGains = zeros(25,1);
 for i= 1:25;
      Gains(i) = day2of2(i) - day1of2(i);
      if Gains(i) > 0;

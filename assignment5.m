@@ -30,7 +30,6 @@ when I run your code.)
 %}
 %created by Jessica McDonnell
 %Due Oct 20
-
 clear all
 close all
 
@@ -53,14 +52,16 @@ for i = 1:25
     normDay3(i) = (Day3(i) / Weight(i));
     normDay3mean = mean (normDay3);
 end
-% 
-% %iso_results (femaleIsoIndMeans, maleIsoIndMeans, femaleGroupIsoMean, maleGroupIsoMean, day1toDay2, day2toDay3, normDay1mean, normDay2mean, normDay3mean)
-% 
-% ExportVariables = {'femaleIsoIndMeans', 'maleIsoIndMeans', 'femaleGroupIsoMean', 'maleGroupIsoMean', 'day1toDay2', 'day2toDay3', 'normDay1mean', 'normDay2mean', 'normDay3mean'};
-% CummuluativeCell= {femaleIsoIndMeans, maleIsoIndMeans, femaleGroupIsoMean, maleGroupIsoMean, day1toDay2, day2toDay3, normDay1mean, normDay2mean, normDay3mean};
-% 
-% csvwrite('iso_results',CummuluativeCell)
-% 
-% 
-% writetable(CummuluativeCell, 'iso_results.csv');
+
+%% export to *.csv
+allsubjectdata = [SubjectID, maleIsoIndMeans, femaleIsoIndMeans, day1toDay2, day2toDay3];
+meansubjectdata = [maleGroupIsoMean, femaleGroupIsoMean, normDay1mean, normDay2mean, normDay3mean];
+meandata = array2table(meansubjectdata,'VariableNames',{'maleGroupIsoMean' 'femaleGroupIsoMean' 'normDay1mean' 'normDay2mean' 'normDay3mean'});
+subjectdata = array2table(allsubjectdata,'VariableNames',{'SubjectID' 'maleIsoIndMeans' 'femaleIsoIndMeans' 'day1toDay2' 'day2toDay3'});
+
+
+% call export function 
+iso_results (subjectdata,meandata)
+
+
 
