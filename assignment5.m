@@ -60,7 +60,7 @@ meandata = array2table(meansubjectdata,'VariableNames',{'maleGroupIsoMean' 'fema
 subjectdata = array2table(allsubjectdata,'VariableNames',{'SubjectID' 'maleIsoIndMeans' 'femaleIsoIndMeans' 'day1toDay2' 'day2toDay3'});
 
 
-% call export function 
+% call export function
 iso_results (subjectdata,meandata)
 
 
