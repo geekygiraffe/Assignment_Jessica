@@ -20,6 +20,7 @@
 %created by Jessica McDonnell December 1, 2016
 
 %% call function to import file from motion monitor
+TSTART = tic
 %[P1SensorExport] = importMMfile('P1_SensorExport.txt', 11, 1209);
 [P1SensorExport] = importMMfile('P1_SensorExport.txt', 11, 100);
 %% seperate joint segments
@@ -190,6 +191,7 @@ ylabel('Y axis');
 zlabel('Z axis');
 hold off
 
+T = toc
 %%BUG CHECK fucntion
 
 %{
