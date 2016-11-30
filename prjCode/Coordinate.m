@@ -20,9 +20,9 @@
 %created by Jessica McDonnell December 1, 2016
 
 %% call function to import file from motion monitor
-TSTART = tic
-%[P1SensorExport] = importMMfile('P1_SensorExport.txt', 11, 1209);
-[P1SensorExport] = importMMfile('P1_SensorExport.txt', 11, 100);
+tic
+[P1SensorExport] = importMMfile('P1_SensorExport.txt', 11, 1209);
+%[P1SensorExport] = importMMfile('P1_SensorExport.txt', 11, 100);
 %% seperate joint segments
 % arrange the four marker data vectors from each segment plate in one cell per segment with all the plane (x,y,z) averages
 
@@ -123,7 +123,6 @@ fmesh(zPlane_trunk)
 title('Trunk');
 xlabel('X axis');
 ylabel('Y axis');
-subplot(3,1,1)
 zlabel('Z axis');
 hold off
 
@@ -160,7 +159,7 @@ zlabel('Z axis');
 hold off
 
 %Left Arm
-figure(05)
+figure(04)
 fplot3(line_lArm(1),line_lArm(2),line_lArm(3))
 hold on
 subplot(3,1,1)
@@ -176,7 +175,7 @@ zlabel('Z axis');
 hold off
 
 %Left Forearm
-figure(06)
+figure(05)
 fplot3(line_lForearm(1),line_lForearm(2),line_lForearm(3))
 hold on
 subplot(3,1,1)
@@ -191,8 +190,94 @@ ylabel('Y axis');
 zlabel('Z axis');
 hold off
 
-T = toc
+toc
 %%BUG CHECK fucntion
+
+%{
+choice = menu('Would you like to view your data?: Press yes no','Yes','No');
+    if choice == 2
+else
+    %Trunk
+figure(02)
+fplot3(line_trunk(1),line_trunk(2),line_trunk(3))
+hold on
+subplot(3,1,1)
+fmesh(xPlane_trunk)
+subplot(3,1,2)
+fmesh(yPlane_trunk)
+subplot(3,1,3)
+fmesh(zPlane_trunk)
+title('Trunk');
+xlabel('X axis');
+ylabel('Y axis');
+zlabel('Z axis');
+hold off
+
+%Right Arm
+figure(03)
+fplot3(line_rArm(1),line_rArm(2),line_rArm(3))
+hold on
+subplot(3,1,1)
+fmesh(xPlane_rArm)
+subplot(3,1,2)
+fmesh(yPlane_rArm)
+subplot(3,1,3)
+fmesh(zPlane_rArm)
+title('Right Arm');
+xlabel('X axis');
+ylabel('Y axis');
+zlabel('Z axis');
+hold off
+
+%Right Forearm
+figure(04)
+fplot3(line_rForearm(1),line_rForearm(2),line_rForearm(3))
+hold on
+subplot(3,1,1)
+fmesh(xPlane_rForearm)
+subplot(3,1,2)
+fmesh(yPlane_rForearm)
+subplot(3,1,3)
+fmesh(zPlane_rForearm)
+title('Right Forearm');
+xlabel('X axis');
+ylabel('Y axis');
+zlabel('Z axis');
+hold off
+
+%Left Arm
+figure(04)
+fplot3(line_lArm(1),line_lArm(2),line_lArm(3))
+hold on
+subplot(3,1,1)
+fmesh(xPlane_lArm)
+subplot(3,1,2)
+fmesh(yPlane_lArm)
+subplot(3,1,3)
+fmesh(zPlane_lArm)
+title('Left Arm');
+xlabel('X axis');
+ylabel('Y axis');
+zlabel('Z axis');
+hold off
+
+%Left Forearm
+figure(05)
+fplot3(line_lForearm(1),line_lForearm(2),line_lForearm(3))
+hold on
+subplot(3,1,1)
+fmesh(xPlane_lForearm)
+subplot(3,1,2)
+fmesh(yPlane_lForearm)
+subplot(3,1,3)
+fmesh(zPlane_lForearm)
+title('Left Forearm');
+xlabel('X axis');
+ylabel('Y axis');
+zlabel('Z axis');
+hold off
+end
+%}
 
 %{
 figure(01)
