@@ -21,7 +21,12 @@
 
 %% call function to import file from motion monitor
 tic
+<<<<<<< HEAD
 [P1SensorExport] = importMMfile('P1_sensorExport.txt', 11, 1209);
+=======
+[P1SensorExport] = importMMfile('P1_SensorExport.txt', 11, 1209);
+%[P1SensorExport] = importMMfile('P1_SensorExport.txt', 11, 100);
+>>>>>>> origin/master
 %% seperate joint segments
 % arrange the four marker data vectors from each segment plate in one cell per segment with all the plane (x,y,z) averages
 
@@ -226,7 +231,218 @@ else
     hold off
 end
 
+<<<<<<< HEAD
 toc
 
 %%BUG CHECK fucntion
 
+=======
+%Trunk
+figure(02)
+fplot3(line_trunk(1),line_trunk(2),line_trunk(3))
+hold on
+subplot(3,1,1)
+fmesh(xPlane_trunk)
+subplot(3,1,2)
+fmesh(yPlane_trunk)
+subplot(3,1,3)
+fmesh(zPlane_trunk)
+title('Trunk');
+xlabel('X axis');
+ylabel('Y axis');
+zlabel('Z axis');
+hold off
+
+%Right Arm
+figure(03)
+fplot3(line_rArm(1),line_rArm(2),line_rArm(3))
+hold on
+subplot(3,1,1)
+fmesh(xPlane_rArm)
+subplot(3,1,2)
+fmesh(yPlane_rArm)
+subplot(3,1,3)
+fmesh(zPlane_rArm)
+title('Right Arm');
+xlabel('X axis');
+ylabel('Y axis');
+zlabel('Z axis');
+hold off
+
+%Right Forearm
+figure(04)
+fplot3(line_rForearm(1),line_rForearm(2),line_rForearm(3))
+hold on
+subplot(3,1,1)
+fmesh(xPlane_rForearm)
+subplot(3,1,2)
+fmesh(yPlane_rForearm)
+subplot(3,1,3)
+fmesh(zPlane_rForearm)
+title('Right Forearm');
+xlabel('X axis');
+ylabel('Y axis');
+zlabel('Z axis');
+hold off
+
+%Left Arm
+figure(04)
+fplot3(line_lArm(1),line_lArm(2),line_lArm(3))
+hold on
+subplot(3,1,1)
+fmesh(xPlane_lArm)
+subplot(3,1,2)
+fmesh(yPlane_lArm)
+subplot(3,1,3)
+fmesh(zPlane_lArm)
+title('Left Arm');
+xlabel('X axis');
+ylabel('Y axis');
+zlabel('Z axis');
+hold off
+
+%Left Forearm
+figure(05)
+fplot3(line_lForearm(1),line_lForearm(2),line_lForearm(3))
+hold on
+subplot(3,1,1)
+fmesh(xPlane_lForearm)
+subplot(3,1,2)
+fmesh(yPlane_lForearm)
+subplot(3,1,3)
+fmesh(zPlane_lForearm)
+title('Left Forearm');
+xlabel('X axis');
+ylabel('Y axis');
+zlabel('Z axis');
+hold off
+
+toc
+%%BUG CHECK fucntion
+
+%{
+choice = menu('Would you like to view your data?: Press yes no','Yes','No');
+    if choice == 2
+else
+    %Trunk
+figure(02)
+fplot3(line_trunk(1),line_trunk(2),line_trunk(3))
+hold on
+subplot(3,1,1)
+fmesh(xPlane_trunk)
+subplot(3,1,2)
+fmesh(yPlane_trunk)
+subplot(3,1,3)
+fmesh(zPlane_trunk)
+title('Trunk');
+xlabel('X axis');
+ylabel('Y axis');
+zlabel('Z axis');
+hold off
+
+%Right Arm
+figure(03)
+fplot3(line_rArm(1),line_rArm(2),line_rArm(3))
+hold on
+subplot(3,1,1)
+fmesh(xPlane_rArm)
+subplot(3,1,2)
+fmesh(yPlane_rArm)
+subplot(3,1,3)
+fmesh(zPlane_rArm)
+title('Right Arm');
+xlabel('X axis');
+ylabel('Y axis');
+zlabel('Z axis');
+hold off
+
+%Right Forearm
+figure(04)
+fplot3(line_rForearm(1),line_rForearm(2),line_rForearm(3))
+hold on
+subplot(3,1,1)
+fmesh(xPlane_rForearm)
+subplot(3,1,2)
+fmesh(yPlane_rForearm)
+subplot(3,1,3)
+fmesh(zPlane_rForearm)
+title('Right Forearm');
+xlabel('X axis');
+ylabel('Y axis');
+zlabel('Z axis');
+hold off
+
+%Left Arm
+figure(04)
+fplot3(line_lArm(1),line_lArm(2),line_lArm(3))
+hold on
+subplot(3,1,1)
+fmesh(xPlane_lArm)
+subplot(3,1,2)
+fmesh(yPlane_lArm)
+subplot(3,1,3)
+fmesh(zPlane_lArm)
+title('Left Arm');
+xlabel('X axis');
+ylabel('Y axis');
+zlabel('Z axis');
+hold off
+
+%Left Forearm
+figure(05)
+fplot3(line_lForearm(1),line_lForearm(2),line_lForearm(3))
+hold on
+subplot(3,1,1)
+fmesh(xPlane_lForearm)
+subplot(3,1,2)
+fmesh(yPlane_lForearm)
+subplot(3,1,3)
+fmesh(zPlane_lForearm)
+title('Left Forearm');
+xlabel('X axis');
+ylabel('Y axis');
+zlabel('Z axis');
+hold off
+end
+%}
+
+%{
+figure(01)
+plot(lineP1trunk)
+hold on
+plot(lineP2trunk)
+plot(lineP3trunk)
+title('Linear Trunk Line');
+xlabel('X axis');
+ylabel('Y axis');
+legend('Point 1','Point 2','Point3', 'Point4');
+hold off
+
+figure(02)
+fplot3(line(1),line(2),line(3))
+hold on
+fmesh(zPlane)
+title('Linear Trunk Line')
+hold off
+
+figure(03)
+fplot3(line(1),line(2),line(3))
+hold on
+fmesh(xPlane)
+hold off
+
+figure(04)
+fplot3(line(1),line(2),line(3))
+hold on
+fmesh(yPlane)
+hold off
+
+figure(05)
+fplot3(line(1),line(2),line(3))
+hold on
+fmesh(xPlane)
+fmesh(yPlane)
+fmesh(zPlane)
+hold off
+%}
+>>>>>>> origin/master
