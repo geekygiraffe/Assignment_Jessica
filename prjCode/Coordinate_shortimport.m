@@ -21,8 +21,7 @@
 
 %% call function to import file from motion monitor
 tic
-% [P1SensorExport] = importMMfile('P1_sensorExport.txt', 11, 1209);
-[P1SensorExport] = importMMfile('P1_sensorExport.txt', 11, 12);
+[P1SensorExport] = importMMfile('P1_sensorExport.txt', 11, 1209);
 %% seperate joint segments
 % arrange the four marker data vectors from each segment plate in one cell per segment with all the plane (x,y,z) averages
 
@@ -110,10 +109,10 @@ for i = 1:length(trunkP1)
     % [normalVector_lHand, line_lHand, Plane_lHand, xPlane_lHand, yPlane_lHand, zPlane_lHand] = threePointPlane (lHandP1, lHandP2, lHandP3, lHandP4);
 end
 %% Data Visualization
-% choice = menu('Would you like to view your data?: Press yes no','Yes','No');
-% if choice == 2
-%     return
-% else
+choice = menu('Would you like to view your data?: Press yes no','Yes','No');
+if choice == 2
+    return
+else
     %Trunk
     figure(02)
     fplot3(line_trunk(1),line_trunk(2),line_trunk(3))
@@ -225,7 +224,7 @@ end
     ylabel('Y axis');
     zlabel('Z axis');
     hold off
-%end
+end
 
 toc
 
