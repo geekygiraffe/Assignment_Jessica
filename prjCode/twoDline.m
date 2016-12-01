@@ -1,6 +1,6 @@
 function [slope,yint,line, parallelLine] = twoDline (x1, y1, x2, y2, segment);
 %Fucntion calculaties the 2 dimesional line from two points .
-%m is the slope of the line (y2 ? y1)/(x2 ? x1)
+%m is the slope of the line (y2 - y1)/(x2 - x1)
 %b is the y-intercept of the line x is the independent variable of the function y = f(x)
 
 slope = ((y2 - y1) ./ (x2 - x1)); %slope (Yfinal - Yinitial)/(Xfinal - Xinitial)
